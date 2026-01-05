@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Relatório de Avaliação de Ingresso — Escola Manain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Cabeçalho timbrado -->
+  <header id="site-header" role="banner">
+    <div class="header-left">
+      <img src="header.png" alt="Centro Ocupacional de Londrina • Escola Manain" class="header-brand" />
+    </div>
+
+    <div class="header-center">
+      <h1>RELATÓRIO DE AVALIAÇÃO DE INGRESSO</h1>
+      <p class="subtitle">Educação Infantil e Ensino Fundamental • Educação Especial</p>
+    </div>
+
+    <div class="header-right">
+      <button id="btn-save" class="btn primary">Salvar</button>
+      <button id="btn-db" class="btn">Banco de Dados</button>
+      <button id="btn-print" class="btn">Imprimir</button>
+    </div>
+  </header>
+
+  <!-- Conteúdo central (folha) -->
+  <main id="content" role="main">
+    <article class="sheet">
+      <!-- 1. Dados de identificação -->
+      <section class="card" id="form-section">
+        <h2>1. Dados de identificação</h2>
+
+        <form id="avaliacao-form" autocomplete="off">
+          <div class="row">
+            <div class="field">
+              <label for="municipio">Município</label>
+              <input id="municipio" type="text" value="Londrina/PR" />
+            </div>
+            <div class="field">
+              <label for="nre">NRE</label>
+              <input id="nre" type="text" value="Londrina/PR" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field wide">
+              <label for="escola">Escola</label>
+              <input id="escola" type="text" value="Escola Manain" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field wide">
+              <label for="nome">Nome do estudante</label>
+              <input id="nome" type="text" placeholder="Digite o nome completo" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="data-nasc">Data de nascimento</label>
+              <input id="data-nasc" type="date" />
+            </div>
+            <div class="field">
+              <label for="idade">Idade</label>
+              <input id="idade" type="text" readonly placeholder="Calculada automaticamente" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field wide">
+              <label for="filiacao">Filiação (Mãe e Pai)</label>
+              <input id="filiacao" type="text" placeholder="Mãe: ...; Pai: ..." />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="data-avaliacao">Data de avaliação</label>
+              <input id="data-avaliacao" type="date" />
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- 2. Síntese das áreas avaliadas -->
+      <section class="card">
+        <h2>2. Síntese das áreas avaliadas</h2>
+        <div class="areas-buttons">
+          <button id="open-pedagogica" class="pill orange">Avaliação Pedagógica</button>
+          <button id="open-clinica" class="pill green">Avaliação Clínica</button>
+          <button id="open-social" class="pill violet">Serviço Social</button>
+        </div>
+
+        <div class="sintese-grid">
+          <div id="sintese-pedagogica" class="sintese-box">Conteúdo gerado automaticamente.</div>
+          <div id="sintese-clinica" class="sintese-box">Conteúdo gerado automaticamente.</div>
+          <div id="sintese-social" class="sintese-box">Conteúdo gerado automaticamente.</div>
+        </div>
+      </section>
+
+      <!-- 3. Conclusão, Indicações, Encaminhamentos e Observações -->
+      <section class="card">
+        <h2>3. Conclusão diagnóstica</h2>
+        <div id="conclusao-text" class="editable" contenteditable="true"></div>
+      </section>
+
+      <section class="card">
+        <h2>4. Indicações pedagógicas</h2>
+        <div id="indicacoes-text" class="editable" contenteditable="true"></div>
+      </section>
+
+      <section class="card">
+        <h2>5. Encaminhamentos</h2>
+        <div id="encaminhamentos-text" class="editable" contenteditable="true"></div>
+      </section>
+
+      <section class="card">
+        <h2>6. Observações complementares</h2>
+        <div id="observacoes-text" class="editable" contenteditable="true">
+          A escola segue a legislação vigente e assegura acessibilidade e atendimento educacional especializado.
+        </div>
+      </section>
+
+      <section class="card footer-note">
+        <p><strong>Londrina,</strong> <span id="data-eixo">[data da avaliação]</span></p>
+      </section>
+
+      <!-- Assinaturas finais (apenas locais, não persistidas) -->
+      <section class="card" id="assinaturas-finais">
+        <h2>Assinaturas</h2>
+
+        <div class="assinatura-selects">
+          <div class="assinatura-row">
+            <label for="coord-pedagogica">Coordenação Pedagógica</label>
+            <select id="coord-pedagogica">
+              <option value="">Nenhuma</option>
+              <option value="asspedagoda.png">Assinatura A</option>
+              <option value="asspedagoda2.png">Assinatura B</option>
+            </select>
+          </div>
+
+          <div class="assinatura-row">
+            <label for="psicologa">Psicóloga</label>
+            <select id="psicologa">
+              <option value="">Nenhuma</option>
+              <option value="asspsicologa.png">Assinatura Psicóloga</option>
+            </select>
+          </div>
+
+          <div class="assinatura-row">
+            <label for="assist-social">Assistente Social</label>
+            <select id="assist-social">
+              <option value="">Nenhuma</option>
+              <option value="asssocial.png">Assinatura A</option>
+              <option value="asssocial2.png">Assinatura B</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="assinaturas-grid">
+          <figure>
+            <img id="assinatura-coord" alt="Assinatura Coordenação" />
+            <figcaption>Coordenação Pedagógica</figcaption>
+          </figure>
+          <figure>
+            <img id="assinatura-psico" alt="Assinatura Psicóloga" />
+            <figcaption>Psicóloga</figcaption>
+          </figure>
+          <figure>
+            <img id="assinatura-social" alt="Assinatura Assistente Social" />
+            <figcaption>Assistente Social</figcaption>
+          </figure>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <!-- Rodapé timbrado -->
+  <footer id="site-footer" role="contentinfo">
+    <div class="footer-left">
+      <img src="footer.png" alt="Endereço e contato • Escola Manain" class="footer-brand" />
+    </div>
+    <div class="footer-right">
+      Rua das Açucenas Nº. 100 — Jd. Colina Verde • Fone/Fax: (43) 3328-4415 • CEP: 86050-570 — Londrina/PR • centroocupacional.secretaria@gmail.com
+    </div>
+  </footer>
+
+  <!-- Modal fullscreen: Checklist -->
+  <div class="modal fullscreen" id="modal-checklist" aria-hidden="true">
+    <div class="modal-header">
+      <h3 id="modal-title">Checklist</h3>
+      <button class="close" data-close>×</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-grid">
+        <div id="checklist-container" class="modal-left"></div>
+        <div class="modal-right">
+          <label for="texto-relatorio">1. Texto do relatório</label>
+          <textarea id="texto-relatorio" placeholder="Observações..."></textarea>
+
+          <label for="indicacoes-auto">Indicações (Automático)</label>
+          <textarea id="indicacoes-auto" readonly></textarea>
+
+          <label for="encaminhamentos-auto">Encaminhamentos (Automático)</label>
+          <textarea id="encaminhamentos-auto" readonly></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="confirmar-fechar" class="btn primary" disabled>Confirmar e fechar</button>
+    </div>
+  </div>
+
+  <!-- Modal fullscreen: Banco de Dados -->
+  <div class="modal fullscreen" id="modal-db" aria-hidden="true">
+    <div class="modal-header">
+      <h3>Banco de Dados</h3>
+      <button class="close" data-close-db>×</button>
+    </div>
+    <div class="modal-body db-body">
+      <div class="db-controls">
+        <input id="db-search" type="text" placeholder="Buscar por nome, escola ou data (AAAA-MM-DD)" />
+        <button id="db-search-btn" class="btn">Buscar</button>
+        <button id="db-refresh" class="btn">Atualizar lista</button>
+      </div>
+      <ul id="lista-registros" class="db-list"></ul>
+    </div>
+    <div class="modal-footer">
+      <small class="muted">Registros armazenados no Firestore (coleção: relatorios)</small>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

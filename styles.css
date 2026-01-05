@@ -1,0 +1,105 @@
+:root{
+  --bg:#f3f8fb;
+  --paper:#ffffff;
+  --text:#0b3b61;
+  --muted:#556070;
+  --primary:#12a0d8;
+  --green:#27ae60;
+  --orange:#f2994a;
+  --violet:#8e54e9;
+  --border:#e4e7ec;
+  --shadow: 0 8px 24px rgba(11,59,97,0.06);
+  --max-width:900px;
+  --sheet-padding:28px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased}
+
+#site-header, #site-footer{
+  position:fixed; left:0; right:0; background:#fff; z-index:1200; border-bottom:1px solid var(--border);
+}
+#site-header{top:0; display:flex; align-items:center; gap:16px; padding:12px 20px; justify-content:space-between; background:linear-gradient(180deg,#fbfeff,#fff)}
+.header-left, .header-center, .header-right{display:flex; align-items:center}
+.header-left .header-brand{height:56px; width:auto}
+.header-center{flex-direction:column; text-align:center; flex:1}
+.header-center h1{margin:0; font-size:18px; letter-spacing:0.6px; color:var(--text); font-weight:800}
+.header-center .subtitle{margin:2px 0 0; font-size:12px; color:var(--muted)}
+.header-right{gap:8px}
+
+.btn{padding:8px 12px; border-radius:8px; border:1px solid var(--border); background:#fff; cursor:pointer; font-weight:700; color:var(--text)}
+.btn.primary{background:var(--primary); color:#fff; border-color:transparent}
+.btn:hover{filter:brightness(0.98)}
+
+#content{display:flex; justify-content:center; padding:160px 20px 120px}
+.sheet{width:100%; max-width:var(--max-width); background:var(--paper); box-shadow:var(--shadow); border-radius:8px; padding:var(--sheet-padding); margin:0 auto}
+
+.card{margin-bottom:18px; padding:14px; border-radius:8px; border:1px solid #f0f3f6; background:linear-gradient(180deg,#fff,#fbfdff)}
+.card h2{margin:0 0 10px; font-size:15px; color:var(--text); font-weight:800; border-bottom:1px solid var(--border); padding-bottom:8px}
+
+.row{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px}
+.field{flex:1; min-width:180px; display:flex; flex-direction:column}
+.field.wide{flex-basis:100%}
+label{font-size:12px; color:var(--muted); font-weight:700; margin-bottom:6px}
+input[type="text"], input[type="date"], select, textarea{padding:10px; border-radius:8px; border:1px solid var(--border); font-size:14px; background:#fff}
+input[readonly]{background:#f6f9fb}
+.editable{min-height:120px; padding:10px; border-radius:8px; border:1px dashed var(--border); background:#fbfdff}
+
+.assinaturas{border:1px dashed var(--border); padding:10px; border-radius:8px}
+.assinatura-row{display:flex; gap:12px; align-items:center; margin-bottom:10px}
+.preview img{max-height:64px; display:none; border:1px solid var(--border); border-radius:6px; background:#fff}
+.legend{font-size:12px; color:var(--muted)}
+
+.areas-buttons{display:flex; gap:8px; margin-bottom:12px}
+.pill{padding:8px 12px; border-radius:999px; color:#fff; font-weight:800; border:none; cursor:pointer}
+.pill.orange{background:var(--orange)} .pill.green{background:var(--green)} .pill.violet{background:var(--violet)}
+
+.sintese-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+.sintese-box{min-height:110px; padding:10px; border-radius:8px; border:1px dashed var(--border); background:#fbfdff}
+
+.footer-note{display:flex; justify-content:flex-start; align-items:center}
+
+#site-footer{bottom:0; display:flex; gap:12px; align-items:center; padding:10px 20px; border-top:1px solid var(--border); background:linear-gradient(0deg,#fff,#fbfeff)}
+.footer-brand{height:40px}
+#site-footer .footer-right{font-size:13px; color:var(--muted)}
+
+/* Assinaturas finais layout */
+.assinaturas-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px}
+.assinaturas-grid figure{margin:0; text-align:center}
+.assinaturas-grid img{max-height:84px; width:auto; border:1px solid var(--border); border-radius:6px; background:#fff}
+
+/* Modal fullscreen */
+.modal.fullscreen{position:fixed; inset:0; background:#fff; z-index:2000; display:none; grid-template-rows:auto 1fr auto}
+.modal.fullscreen[aria-hidden="false"]{display:grid}
+.modal-header{display:flex; align-items:center; gap:12px; padding:12px 18px; border-bottom:1px solid var(--border); background:#f0fbff}
+.modal-header h3{margin:0; font-size:18px; color:var(--text)}
+.modal-header .close{margin-left:auto; background:transparent; border:none; font-size:22px; cursor:pointer}
+.modal-body{padding:16px; overflow:auto}
+.modal-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:16px}
+.modal-left{border:1px solid var(--border); border-radius:8px; padding:10px; background:#fbfdff}
+.modal-right{border:1px solid var(--border); border-radius:8px; padding:10px; background:#fff}
+.modal-right textarea{width:100%; min-height:120px; resize:vertical}
+
+.grupo{border-radius:8px; border:1px solid #eef4f8; margin-bottom:10px; background:#fff}
+.grupo header{padding:8px 10px; font-weight:800; color:var(--text); border-bottom:1px solid var(--border)}
+.item{padding:8px 10px; display:flex; gap:8px; align-items:flex-start; border-top:1px dashed #eef2f6}
+.item input[type="checkbox"]{margin-top:4px}
+
+/* DB modal */
+.db-body{display:flex; flex-direction:column; gap:12px}
+.db-controls{display:flex; gap:8px; align-items:center; margin-bottom:8px}
+.db-list{list-style:none; padding:0; margin:0; max-height:420px; overflow:auto}
+.db-list li{display:flex; justify-content:space-between; gap:8px; padding:8px; border-bottom:1px solid #f0f3f6; align-items:center}
+.db-list button{margin-left:8px}
+
+/* Impressão: imprimir apenas o documento (papel timbrado) */
+@media print{
+  body{background:#fff}
+  .header-right, .btn, .modal, .close, .db-controls, .areas-buttons { display:none !important; }
+  #site-header, #site-footer{position:fixed; display:block}
+  #site-header{top:0}
+  #site-footer{bottom:0}
+  #content{margin:0; padding:0}
+  .sheet{box-shadow:none; border-radius:0; padding:36px; margin:0; width:100%}
+  .card, .grupo, .item, .sintese-box, .editable { page-break-inside:avoid; break-inside:avoid; }
+}
