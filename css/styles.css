@@ -1,0 +1,153 @@
+/* styles.css — tema refinado, tipografia, espaçamento e impressão */
+
+/* Theme variables */
+:root{
+  --bg: #f4f7fb;
+  --paper: #ffffff;
+  --text: #0b2f4a;
+  --muted: #6b7a86;
+  --accent: #0f7fbf;
+  --accent-2: #27ae60;
+  --accent-3: #f2994a;
+  --border: #e6eef6;
+  --shadow: 0 10px 30px rgba(15,47,74,0.06);
+  --max-width: 920px;
+  --sheet-padding: 32px;
+  --radius: 10px;
+  --print-header-height: 140px;
+  --print-footer-height: 100px;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Reset */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);font-family:var(--font-sans);color:var(--text);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+
+/* Header - static on screen, compact and centered content */
+#site-header{
+  position:static;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:14px 20px;
+  background:linear-gradient(180deg,#fff,#fbfdff);
+  border-bottom:1px solid var(--border);
+}
+.header-left{display:flex;align-items:center;gap:12px}
+.header-left .logo{height:56px;width:auto;border-radius:6px}
+.header-center{flex:1;text-align:center;display:flex;flex-direction:column;gap:2px;align-items:center;padding:0 12px}
+.institution-name{font-weight:800;font-size:13px;letter-spacing:0.2px}
+.institution-sub{font-size:12px;color:var(--muted)}
+.report-title{margin-top:6px;font-size:17px;font-weight:900;color:var(--text)}
+.report-sub{font-size:12px;color:var(--muted)}
+
+/* Header actions */
+.header-right{display:flex;gap:8px;align-items:center}
+.btn{background:#fff;border:1px solid var(--border);padding:8px 12px;border-radius:8px;font-weight:700;color:var(--text);cursor:pointer;font-size:13px}
+.btn.primary{background:var(--accent);color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(15,127,191,0.12)}
+.btn.ghost{background:transparent;border:1px solid rgba(11,59,97,0.06)}
+.btn:hover{transform:translateY(-1px);transition:all .12s ease}
+
+/* Page layout */
+#content{display:flex;justify-content:center;padding:36px 20px 80px}
+.sheet{width:100%;max-width:var(--max-width);background:var(--paper);box-shadow:var(--shadow);border-radius:var(--radius);padding:var(--sheet-padding);margin:0 auto;overflow:visible}
+
+/* Card */
+.card{margin-bottom:18px;padding:16px;border-radius:8px;border:1px solid #f1f6fb;background:linear-gradient(180deg,#fff,#fbfdff)}
+.card h2{margin:0 0 12px;font-size:15px;font-weight:800;color:var(--text);border-bottom:1px solid var(--border);padding-bottom:8px}
+
+/* Form grid */
+.row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.field{flex:1;min-width:180px;display:flex;flex-direction:column}
+.field.wide{flex-basis:100%}
+label{font-size:12px;color:var(--muted);font-weight:700;margin-bottom:6px}
+input[type="text"],input[type="date"],select,textarea{
+  padding:10px;border-radius:8px;border:1px solid var(--border);font-size:14px;background:#fff;color:var(--text)
+}
+input:focus,select:focus,textarea:focus{outline:none;box-shadow:0 6px 18px rgba(15,127,191,0.08);border-color:var(--accent)}
+input[readonly]{background:#f6f9fb}
+
+/* Editable blocks */
+.editable{min-height:120px;padding:12px;border-radius:8px;border:1px dashed var(--border);background:#fbfdff;white-space:pre-wrap}
+
+/* Pills */
+.areas-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.pill{padding:8px 14px;border-radius:999px;color:#fff;font-weight:800;border:none;cursor:pointer;font-size:13px;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
+.pill.orange{background:var(--accent-3)}.pill.green{background:var(--accent-2)}.pill.blue{background:var(--accent)}
+
+/* Synthesis grid */
+.sintese-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sintese-box{min-height:110px;padding:12px;border-radius:8px;border:1px dashed var(--border);background:#fbfdff;color:var(--muted);font-size:14px}
+
+/* Footer on screen centered to sheet width */
+#site-footer{
+  position:static;
+  display:flex;
+  justify-content:center;
+  padding:14px 20px;
+  background:linear-gradient(0deg,#fff,#fbfeff);
+  border-top:1px solid var(--border);
+}
+#site-footer .footer-container{
+  width:100%;max-width:var(--max-width);display:flex;justify-content:center;align-items:center;padding:0 12px;box-sizing:border-box;
+}
+.footer-text{font-size:13px;color:var(--muted);text-align:center;line-height:1.3}
+
+/* Signatures area */
+.assinaturas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.assinaturas-grid figure{margin:0;text-align:center}
+.assinaturas-grid img{max-height:84px;border-radius:6px;border:1px solid var(--border);background:#fff;padding:6px}
+
+/* DB list */
+.db-list{list-style:none;padding:0;margin:0;max-height:420px;overflow:auto}
+.db-list li{display:flex;justify-content:space-between;align-items:center;padding:10px;border-bottom:1px solid #f1f6fb}
+
+/* Responsive */
+@media (max-width:980px){
+  .sintese-grid{grid-template-columns:1fr}
+  .assinaturas-grid{grid-template-columns:1fr}
+  .header-center{padding:0 8px}
+  #content{padding:28px 12px 80px}
+}
+@media (max-width:600px){
+  .row{flex-direction:column}
+  .header-left .logo{height:48px}
+  .report-title{font-size:15px}
+  .header-right{gap:6px}
+}
+
+/* Print rules: header/footer fixed and centered on paper */
+@media print{
+  /* hide interactive UI */
+  .header-right,.btn,.modal,.close,.db-controls,.areas-buttons{display:none!important}
+
+  /* fix and center header/footer to sheet width */
+  #site-header,#site-footer{
+    position:fixed;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:var(--max-width);
+    box-sizing:border-box;
+    background:transparent;
+    border:none;
+    z-index:9999;
+    padding:0;
+  }
+  #site-header{top:0;text-align:center;padding-top:8px;padding-bottom:8px}
+  #site-footer{bottom:0;text-align:center;padding-top:6px;padding-bottom:6px}
+
+  /* reserve space so content doesn't overlap timbre */
+  .sheet{margin-top:var(--print-header-height);margin-bottom:var(--print-footer-height);padding:36px;box-shadow:none;border-radius:0;width:100%;max-width:var(--max-width)}
+
+  /* avoid page breaks inside important blocks */
+  .card,.sintese-box,.editable,.assinaturas-grid{page-break-inside:avoid;break-inside:avoid}
+
+  /* ensure readable print colors */
+  body,.sheet,.card{background:#fff!important; --color-adjust:exact; --webkit-print-color-adjust:exact}
+}
+
+/* small visual refinements */
+small.muted{color:var(--muted);font-size:12px}
+a{color:var(--accent);text-decoration:none}
