@@ -1,105 +1,297 @@
+/* styles.css — layout institucional, cabeçalho/rodapé estáticos na tela e fixos centralizados na impressão */
+
+/* ====== Variáveis de tema ====== */
 :root{
-  --bg:#f3f8fb;
-  --paper:#ffffff;
-  --text:#0b3b61;
-  --muted:#556070;
-  --primary:#12a0d8;
-  --green:#27ae60;
-  --orange:#f2994a;
-  --violet:#8e54e9;
-  --border:#e4e7ec;
+  --bg: #f3f8fb;
+  --paper: #ffffff;
+  --text: #0b3b61;
+  --muted: #556070;
+  --primary: #12a0d8;
+  --green: #27ae60;
+  --orange: #f2994a;
+  --violet: #8e54e9;
+  --border: #e4e7ec;
   --shadow: 0 8px 24px rgba(11,59,97,0.06);
-  --max-width:900px;
-  --sheet-padding:28px;
+  --max-width: 900px;
+  --sheet-padding: 28px;
+  --print-header-height: 140px;
+  --print-footer-height: 100px;
+  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased}
+/* ====== Reset e base ====== */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; font-family: var(--font-sans); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; background: var(--bg); color: var(--text); }
+img { max-width: 100%; display: block; }
 
-#site-header, #site-footer{
-  position:fixed; left:0; right:0; background:#fff; z-index:1200; border-bottom:1px solid var(--border);
+/* ====== Cabeçalho (estático na tela) ====== */
+#site-header {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg,#fbfeff,#fff);
+  z-index: 10;
 }
-#site-header{top:0; display:flex; align-items:center; gap:16px; padding:12px 20px; justify-content:space-between; background:linear-gradient(180deg,#fbfeff,#fff)}
-.header-left, .header-center, .header-right{display:flex; align-items:center}
-.header-left .header-brand{height:56px; width:auto}
-.header-center{flex-direction:column; text-align:center; flex:1}
-.header-center h1{margin:0; font-size:18px; letter-spacing:0.6px; color:var(--text); font-weight:800}
-.header-center .subtitle{margin:2px 0 0; font-size:12px; color:var(--muted)}
-.header-right{gap:8px}
 
-.btn{padding:8px 12px; border-radius:8px; border:1px solid var(--border); background:#fff; cursor:pointer; font-weight:700; color:var(--text)}
-.btn.primary{background:var(--primary); color:#fff; border-color:transparent}
-.btn:hover{filter:brightness(0.98)}
+/* logo no canto esquerdo */
+.header-left { display: flex; align-items: center; gap: 12px; }
+.header-left .logo { height: 56px; width: auto; }
 
-#content{display:flex; justify-content:center; padding:160px 20px 120px}
-.sheet{width:100%; max-width:var(--max-width); background:var(--paper); box-shadow:var(--shadow); border-radius:8px; padding:var(--sheet-padding); margin:0 auto}
-
-.card{margin-bottom:18px; padding:14px; border-radius:8px; border:1px solid #f0f3f6; background:linear-gradient(180deg,#fff,#fbfdff)}
-.card h2{margin:0 0 10px; font-size:15px; color:var(--text); font-weight:800; border-bottom:1px solid var(--border); padding-bottom:8px}
-
-.row{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px}
-.field{flex:1; min-width:180px; display:flex; flex-direction:column}
-.field.wide{flex-basis:100%}
-label{font-size:12px; color:var(--muted); font-weight:700; margin-bottom:6px}
-input[type="text"], input[type="date"], select, textarea{padding:10px; border-radius:8px; border:1px solid var(--border); font-size:14px; background:#fff}
-input[readonly]{background:#f6f9fb}
-.editable{min-height:120px; padding:10px; border-radius:8px; border:1px dashed var(--border); background:#fbfdff}
-
-.assinaturas{border:1px dashed var(--border); padding:10px; border-radius:8px}
-.assinatura-row{display:flex; gap:12px; align-items:center; margin-bottom:10px}
-.preview img{max-height:64px; display:none; border:1px solid var(--border); border-radius:6px; background:#fff}
-.legend{font-size:12px; color:var(--muted)}
-
-.areas-buttons{display:flex; gap:8px; margin-bottom:12px}
-.pill{padding:8px 12px; border-radius:999px; color:#fff; font-weight:800; border:none; cursor:pointer}
-.pill.orange{background:var(--orange)} .pill.green{background:var(--green)} .pill.violet{background:var(--violet)}
-
-.sintese-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
-.sintese-box{min-height:110px; padding:10px; border-radius:8px; border:1px dashed var(--border); background:#fbfdff}
-
-.footer-note{display:flex; justify-content:flex-start; align-items:center}
-
-#site-footer{bottom:0; display:flex; gap:12px; align-items:center; padding:10px 20px; border-top:1px solid var(--border); background:linear-gradient(0deg,#fff,#fbfeff)}
-.footer-brand{height:40px}
-#site-footer .footer-right{font-size:13px; color:var(--muted)}
-
-/* Assinaturas finais layout */
-.assinaturas-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px}
-.assinaturas-grid figure{margin:0; text-align:center}
-.assinaturas-grid img{max-height:84px; width:auto; border:1px solid var(--border); border-radius:6px; background:#fff}
-
-/* Modal fullscreen */
-.modal.fullscreen{position:fixed; inset:0; background:#fff; z-index:2000; display:none; grid-template-rows:auto 1fr auto}
-.modal.fullscreen[aria-hidden="false"]{display:grid}
-.modal-header{display:flex; align-items:center; gap:12px; padding:12px 18px; border-bottom:1px solid var(--border); background:#f0fbff}
-.modal-header h3{margin:0; font-size:18px; color:var(--text)}
-.modal-header .close{margin-left:auto; background:transparent; border:none; font-size:22px; cursor:pointer}
-.modal-body{padding:16px; overflow:auto}
-.modal-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:16px}
-.modal-left{border:1px solid var(--border); border-radius:8px; padding:10px; background:#fbfdff}
-.modal-right{border:1px solid var(--border); border-radius:8px; padding:10px; background:#fff}
-.modal-right textarea{width:100%; min-height:120px; resize:vertical}
-
-.grupo{border-radius:8px; border:1px solid #eef4f8; margin-bottom:10px; background:#fff}
-.grupo header{padding:8px 10px; font-weight:800; color:var(--text); border-bottom:1px solid var(--border)}
-.item{padding:8px 10px; display:flex; gap:8px; align-items:flex-start; border-top:1px dashed #eef2f6}
-.item input[type="checkbox"]{margin-top:4px}
-
-/* DB modal */
-.db-body{display:flex; flex-direction:column; gap:12px}
-.db-controls{display:flex; gap:8px; align-items:center; margin-bottom:8px}
-.db-list{list-style:none; padding:0; margin:0; max-height:420px; overflow:auto}
-.db-list li{display:flex; justify-content:space-between; gap:8px; padding:8px; border-bottom:1px solid #f0f3f6; align-items:center}
-.db-list button{margin-left:8px}
-
-/* Impressão: imprimir apenas o documento (papel timbrado) */
-@media print{
-  body{background:#fff}
-  .header-right, .btn, .modal, .close, .db-controls, .areas-buttons { display:none !important; }
-  #site-header, #site-footer{position:fixed; display:block}
-  #site-header{top:0}
-  #site-footer{bottom:0}
-  #content{margin:0; padding:0}
-  .sheet{box-shadow:none; border-radius:0; padding:36px; margin:0; width:100%}
-  .card, .grupo, .item, .sintese-box, .editable { page-break-inside:avoid; break-inside:avoid; }
+/* centro com texto institucional */
+.header-center {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  padding: 0 12px;
 }
+.institution-name { font-weight: 800; color: var(--text); font-size: 13px; letter-spacing: 0.2px; }
+.institution-sub { font-size: 12px; color: var(--muted); }
+.institution-meta { font-size: 11px; color: var(--muted); }
+.report-title { margin: 6px 0 0; font-size: 16px; font-weight: 900; color: var(--text); }
+.report-sub { font-size: 12px; color: var(--muted); }
+
+/* ações à direita (visíveis na tela, ocultas na impressão) */
+.header-right { display: flex; gap: 8px; align-items: center; }
+
+/* ====== Botões ====== */
+.btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--text);
+  font-size: 13px;
+}
+.btn.primary { background: var(--primary); color: #fff; border-color: transparent; }
+.btn:hover { filter: brightness(0.98); }
+
+/* ====== Conteúdo central (folha) ====== */
+#content { display: flex; justify-content: center; padding: 36px 20px 80px; }
+.sheet {
+  width: 100%;
+  max-width: var(--max-width);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  padding: var(--sheet-padding);
+  margin: 0 auto;
+  overflow: visible;
+}
+
+/* ====== Cards e formulários ====== */
+.card {
+  margin-bottom: 18px;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #f0f3f6;
+  background: linear-gradient(180deg,#fff,#fbfdff);
+}
+.card h2 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 800;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+/* grid de campos */
+.row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.field { flex: 1; min-width: 180px; display: flex; flex-direction: column; }
+.field.wide { flex-basis: 100%; }
+label { font-size: 12px; color: var(--muted); font-weight: 700; margin-bottom: 6px; }
+input[type="text"], input[type="date"], select, textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  background: #fff;
+}
+input[readonly] { background: #f6f9fb; }
+.editable {
+  min-height: 120px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px dashed var(--border);
+  background: #fbfdff;
+  white-space: pre-wrap;
+}
+
+/* pílulas de avaliação */
+.areas-buttons { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.pill { padding: 8px 12px; border-radius: 999px; color: #fff; font-weight: 800; border: none; cursor: pointer; font-size: 13px; }
+.pill.orange { background: var(--orange); } .pill.green { background: var(--green); } .pill.violet { background: var(--violet); }
+
+/* síntese em grid */
+.sintese-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.sintese-box { min-height: 110px; padding: 10px; border-radius: 8px; border: 1px dashed var(--border); background: #fbfdff; }
+
+/* nota de rodapé dentro da folha */
+.footer-note { display: flex; justify-content: flex-start; align-items: center; }
+
+/* ====== Assinaturas finais (apenas locais) ====== */
+.assinatura-selects { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.assinatura-row { display: flex; flex-direction: column; min-width: 180px; }
+.assinaturas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+.assinaturas-grid figure { margin: 0; text-align: center; }
+.assinaturas-grid img { max-height: 84px; width: auto; border: 1px solid var(--border); border-radius: 6px; background: #fff; }
+
+/* ====== Rodapé textual (estático na tela) ======
+   Footer container centered and aligned to sheet width.
+*/
+#site-footer {
+  position: static;
+  display: flex;
+  justify-content: center; /* center the inner container on the page */
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  background: linear-gradient(0deg,#fff,#fbfeff);
+  z-index: 10;
+}
+
+/* internal container matches sheet width and centers content */
+#site-footer .footer-container {
+  width: 100%;
+  max-width: var(--max-width);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  padding: 0 12px;
+}
+
+/* fallback if HTML doesn't include .footer-container: style .footer-left to behave like container */
+#site-footer .footer-left {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  padding: 0 12px;
+}
+
+.footer-institution { font-weight: 700; color: var(--text); font-size: 13px; }
+.footer-contact, .footer-email { font-size: 12px; color: var(--muted); }
+
+/* ====== Modal fullscreen (checklist e DB) ====== */
+.modal.fullscreen {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 2000;
+  display: none;
+  grid-template-rows: auto 1fr auto;
+}
+.modal.fullscreen[aria-hidden="false"] { display: grid; }
+.modal-header { display: flex; align-items: center; gap: 12px; padding: 12px 18px; border-bottom: 1px solid var(--border); background: #f0fbff; }
+.modal-header h3 { margin: 0; font-size: 18px; color: var(--text); }
+.modal-header .close { margin-left: auto; background: transparent; border: none; font-size: 22px; cursor: pointer; }
+.modal-body { padding: 16px; overflow: auto; }
+.modal-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; }
+.modal-left { border: 1px solid var(--border); border-radius: 8px; padding: 10px; background: #fbfdff; }
+.modal-right { border: 1px solid var(--border); border-radius: 8px; padding: 10px; background: #fff; }
+.modal-right textarea { width: 100%; min-height: 120px; resize: vertical; }
+
+/* DB modal specifics */
+.db-body { display: flex; flex-direction: column; gap: 12px; }
+.db-controls { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+.db-list { list-style: none; padding: 0; margin: 0; max-height: 420px; overflow: auto; }
+.db-list li { display: flex; justify-content: space-between; gap: 8px; padding: 8px; border-bottom: 1px solid #f0f3f6; align-items: center; }
+
+/* ====== Responsividade ====== */
+@media (max-width: 980px) {
+  .sintese-grid { grid-template-columns: 1fr; }
+  .assinaturas-grid { grid-template-columns: 1fr; }
+  .header-center { padding: 0 8px; }
+  #content { padding: 24px 12px 80px; }
+  .sheet { padding: 20px; }
+}
+@media (max-width: 720px) {
+  #site-footer .footer-left { flex-direction: column; text-align: center; gap: 6px; }
+}
+@media (max-width: 520px) {
+  .row { flex-direction: column; }
+  .header-left .logo { height: 48px; }
+  .report-title { font-size: 14px; }
+  .institution-meta { display: none; }
+  .header-right { gap: 6px; }
+}
+
+/* ====== Impressão: cabeçalho e rodapé fixos e centralizados no papel timbrado ====== */
+@media print {
+  /* esconder controles e elementos interativos */
+  .header-right, .btn, .modal, .close, .db-controls, .areas-buttons { display: none !important; }
+
+  /* centralizar e fixar timbre */
+  #site-header, #site-footer {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: var(--max-width);
+    box-sizing: border-box;
+    background: transparent;
+    border: none;
+    z-index: 9999;
+    padding: 0;
+  }
+
+  /* header no topo da página impressa */
+  #site-header {
+    top: 0;
+    display: block;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  /* footer na base da página impressa */
+  #site-footer {
+    bottom: 0;
+    display: block;
+    text-align: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  /* ajustar a área da folha para não sobrepor timbre */
+  .sheet {
+    margin-top: var(--print-header-height);
+    margin-bottom: var(--print-footer-height);
+    padding: 36px;
+    box-shadow: none;
+    border-radius: 0;
+    width: 100%;
+    max-width: var(--max-width);
+  }
+
+  /* evitar cortes de conteúdo entre páginas */
+  .card, .grupo, .item, .sintese-box, .editable { page-break-inside: avoid; break-inside: avoid; }
+
+  /* garantir que assinaturas apareçam na última página se possível */
+  #assinaturas-finais { page-break-inside: avoid; break-inside: avoid; }
+
+  /* remover backgrounds pesados que podem sobrepor o timbre */
+  body, .sheet, .card { background: #fff !important; --webkit-print-color-adjust: exact; --color-adjust: exact; }
+
+  /* ajustar fontes para impressão */
+  .report-title { font-size: 18px; }
+  .institution-name, .institution-sub { font-size: 12px; }
+}
+
+/* ====== Pequenos refinamentos visuais ====== */
+a { color: var(--primary); text-decoration: none; }
+small.muted { color: var(--muted); font-size: 12px; }
